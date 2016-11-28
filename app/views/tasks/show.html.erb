@@ -4,6 +4,10 @@
   <strong>Content:</strong>
   <%= @task.content %>
 </p>
+<strong>State:</strong>
+  <%= @task.state %>
+</p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to 'Back', tasks_path %>
+<%= link_to 'Destroy', task_path(@task), method: :delete, data: { confirm: 'Are you sure?' } %>

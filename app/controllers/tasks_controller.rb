@@ -4,7 +4,13 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_user.tasks
+    @to_do = Task.where(state: 'to_do')
+    @to_do.each {|td| td.user = current_user}
+    @doing = Task.where(state: 'doing')
+    @doing.each {|d| d.user = current_user}
+    @done = Task.where(state: 'done')
+    @done.each {|d| d.user = current_user}
+
   end
 
   # GET /tasks/1
@@ -69,6 +75,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:content)
+      params.require(:task).permit(:content, :state)
     end
 end

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   get 'pages/about' => 'pages#about'
 
+  get 'pages/test' => 'pages#test'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
